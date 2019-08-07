@@ -40,7 +40,14 @@ public class BCryptPasswordHashProvider implements PasswordHashProvider {
     @Override
     public String encode(String rawPassword, int iterations) {
         int logRounds = iterations == -1 ? iterationsToLogRounds(defaultIterations) : iterationsToLogRounds(iterations);
-        return BCrypt.hashpw(rawPassword, BCrypt.gensalt(logRounds));
+        
+     //   return BCrypt.hashpw(rawPassword, BCrypt.gensalt(logRounds));
+        
+        /**
+         * Changed here to not BCrypt password for user migration
+         */
+        
+    	return rawPassword;
     }
 
     @Override
@@ -50,8 +57,13 @@ public class BCryptPasswordHashProvider implements PasswordHashProvider {
         }
 
         String salt = BCrypt.gensalt(iterationsToLogRounds(iterations));
-        String password = BCrypt.hashpw(rawPassword, salt);
+        /**
+         * Changed here to not BCrypt password for user migration
+         */
+       // String password = BCrypt.hashpw(rawPassword, salt);
 
+        String password =rawPassword;
+        
         credential.setAlgorithm(providerId);
         credential.setType(UserCredentialModel.PASSWORD);
         credential.setHashIterations(iterations);
