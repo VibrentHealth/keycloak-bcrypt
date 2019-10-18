@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.leroyguillaume</groupId>
-    <artifactId>keycloak-bcrypt</artifactId>
+    <artifactId>keycloak-bcrypt-usermigration</artifactId>
     <version>1.1.0</version>
 
     <properties>
